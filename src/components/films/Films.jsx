@@ -1,29 +1,35 @@
-import React, { Fragment } from 'react';
+import React, { Component } from 'react';
+import ItemCard from '../shared/ItemCard';
 
-const Films = props => {
-
-   return (
-      <h1>film</h1>
-   )
-   // return props.films.map(film => {
-   //    return (
-   //       <Fragment>
-   //          <h1>This is the films page</h1>
-   //          <div className="card" key={film.id} style={{width: "18rem"}}>
-   //                <div className="card-body">
-   //                   <h5 className="card-title">{film.title}</h5>
-   //                   <p className="card-text">
-   //                      Some quick example text to build on the card title and make
-   //                      up the bulk of the card's content.
-   //                   </p>
-   //                </div>
-   //             </div>
-   //       </Fragment>
-   //    );
-   // })
-   
-      
+class Films extends Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         films: []
+      };
    }
 
+async componentDidMount() {
+   
+      let res = await fetch('https://ghibliapi.herokuapp.com/films');
+      let films = await res.json();
+      this.setState({ films });
+   
+}
+
+   render() {
+      return (
+         <main className="py-3" style={{background: '#E5E4E2'}}>
+            <div className="container-fluid pt-3 px-5">
+               <div className="row justify-content-center">
+                  {this.state.films.map(film => {
+                     return <ItemCard key={film.id} film={film} />;
+                  })}
+               </div>
+            </div>
+         </main>
+      );
+   }
+}
 
 export default Films;
