@@ -1,57 +1,83 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
-import Home from './shared/Home';
-import Films from './films/Films';
-import Peeps from './people/Peeps';
-import Header from './shared/Header'
-
-
-class App extends Component {
-   constructor(props) {
-      super(props); 
-         this.state = {
-            films: [],
-            people: []
+description,
+         director,
+         producer,
+         release_date,
+   rt_score
          
-      }
+
+
+
+   //
+
+
+
+
+///
+
+class EachFilm extends Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         film: {}
+      };
    }
 
-   componentDidMount() {
+   async componentDidMount() {
       try {
-         fetch('https://ghibliapi.herokuapp.com/films')
-            .then(resFilms => {
-               return resFilms.json()
-            })
-            .then(films => this.setState(films));
-         fetch('https://ghibliapi.herokuapp.com/people')
-            .then(resPeeps => {
-               return resPeeps.json()
-         })
-            // .then(people => this.setState({ people }))
+         let resFilm = await fetch(
+            `https://ghibliapi.herokuapp.com/films/${this.props.match.params.id}`
+         );
+         let film = await resFilm.json();
+         console.log('fired')
+         this.setState({ film });
       } catch (e) {
          console.log(e);
       }
    }
-   
 
    render() {
+      let {
+         title,
+         
+      } = this.state.film;
       return (
-         <Router>
-            <Fragment>
-               <Header />
-               <Link to="/">{<button className="btn btn-primary m-2 d-inline-block">Go Home</button>}</Link>
-               <Link to="/films">View Films</Link>
-               <Link to="/peeps">View People</Link>
-               {/* <Films films={this.state.films} /> */}
-               <Switch>
-                  <Route exact path="/" component={Home}></Route>
-                  <Route path="/films" component={Films} />
-                  <Route path="/peeps" component={Peeps} />
-               </Switch>
-            </Fragment>
-         </Router>
+         <main className="py-3" style={{background: '#E5E4E2'}}>
+            <div className="container-fluid pt-3 px-5">
+               <div className="row justify-content-center">
+                  {/* {this.state.films.map(film => {
+                     return <EachFilmCard key={film.id} film={film} />;
+                  })} */}
+               </div>
+            </div>
+         </main>
       );
    }
 }
 
-export default App;
+export default EachFilm;
+
+
+///
+
+const EachFilm = (props) => {
+   let { title, description } = props.film
+   return (
+      <div className="card">
+         <div className="card-body">
+            <h5 className="card-title">{title}</h5>
+            <p className="card-text">
+               {description}
+            </p>
+            <Link
+                  to="/films"
+                  className="btn  m-2 d-inline-block "
+                  style={{ background: 'white', border: 'solid black 1px' }}
+               >
+                  View Films
+               </Link>
+         </div>
+      </div>
+   );
+};
+
+export default EachFilm;
