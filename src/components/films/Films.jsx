@@ -19,7 +19,7 @@ async componentDidMount() {
 
    render() {
       return (
-         <main className="py-3" style={{background: '#E5E4E2'}}>
+         <main className="py-3">
             <div className="container-fluid pt-3 px-5">
                <div className="row justify-content-center">
                   {this.state.films.map(film => {

@@ -25,9 +25,8 @@ class EachFilm extends Component {
    }
 
    render() {
-      let { title } = this.state.film;
       return (
-         <main className="py-3" style={{ background: '#E5E4E2' }}>
+         <main className="py-3">
             <div className="container-fluid pt-3 px-5">
                <div className="row justify-content-center">
                   <EachFilmCard key={this.state.film.id} film={this.state.film} />
