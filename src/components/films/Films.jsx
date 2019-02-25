@@ -9,19 +9,17 @@ class Films extends Component {
       };
    }
 
-async componentDidMount() {
-   
+   async componentDidMount() {
       let res = await fetch('https://ghibliapi.herokuapp.com/films');
       let films = await res.json();
       this.setState({ films });
-   
-}
+   }
 
    render() {
       return (
-         <main className="py-3">
-            <div className="container-fluid pt-3 px-5">
-               <div className="row justify-content-center">
+         <main className="container-fluid py-4 px-5">
+            <div className="row justify-content-center">
+               <div className="card-deck d-f">
                   {this.state.films.map(film => {
                      return <AllFilmCards key={film.id} film={film} />;
                   })}

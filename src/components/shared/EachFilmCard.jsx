@@ -8,12 +8,12 @@ export default props => {
       <div className="col-md-8 mb-2">
          <div className="card border border-secondary rounded">
             <div className="card-body">
-               <h5 className="card-title">{title}</h5>
-               <h6><span style={{ fontWeight: "bold" }}>Description: </span>{description}</h6>
-               <h6><span style={{ fontWeight: "bold" }}>Director: </span>{director}</h6>
-               <h6><span style={{ fontWeight: "bold" }}>Producer: </span>{producer}</h6>
-               <h6><span style={{ fontWeight: "bold" }}>Release Date: </span>{release_date}</h6>
-               <h6><span style={{ fontWeight: "bold" }}>Rotten Tomato Score: </span>{rt_score}</h6>
+               <h2 className="card-title mb-4" style={{ fontWeight: "bold" }}>{title}</h2>
+               <h6 className="mb-3"><span style={{ fontWeight: "bold" }}>Description: </span>{description}</h6>
+               <h6 className="mb-3"><span style={{ fontWeight: "bold" }}>Director: </span>{director}</h6>
+               <h6 className="mb-3"><span style={{ fontWeight: "bold" }}>Producer: </span>{producer}</h6>
+               <h6 className="mb-3"><span style={{ fontWeight: "bold" }}>Release Date: </span>{release_date}</h6>
+               <h6 className="mb-3"><span style={{ fontWeight: "bold" }}>Rotten Tomato Score: </span>{rt_score}</h6>
 
 
                <Link

@@ -7,10 +7,10 @@ class Header extends Component {
       return (
          <Fragment>
             <div
-               className="jumbotron-fluid p-5 text-center"
+               className="jumbotron-fluid p-3 text-center"
                style={{ backgroundColor: '#e5eef0' }}
             >
-               <img className="" src={logo} alt="" />
+               <img className="" src={logo} alt="" style={{height: "300px", width: "600px"}}/>
             </div>
             <div className="text-center pb-3" style={{ background: '#e5eef0', borderBottom: 'solid grey 2px'  }}>
                <Link
