@@ -4,7 +4,8 @@ import Home from './shared/Home';
 import Films from './films/Films';
 import Peeps from './people/Peeps';
 import Header from './shared/Header';
-import EachFilm from './films/EachFilm'
+import EachFilm from './films/EachFilm';
+import EachPeep from './people/EachPeep'
 
 const App = () => {
    return (
@@ -16,6 +17,7 @@ const App = () => {
                <Route exact path="/films" component={Films} />
                <Route exact path="/peeps" component={Peeps} />
                <Route exact path="/film/:id" component={EachFilm} />
+               <Route exact path="/peep/:id" component={EachPeep} />
             </Switch>
          </>
       </Router>

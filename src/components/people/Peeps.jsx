@@ -1,39 +1,33 @@
 import React, { Component } from 'react';
+import AllPeepCards from '../shared/AllPeepCards';
 
 class Peeps extends Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         peeps: []
+      };
+   }
 
-   componentDidMount() {
-      // performs this action when you navigate to this page
-      fetch("https://ghibliapi.herokuapp.com/people").then((resPeep) => {
-         return resPeep.json();
-      })
-      .then((peeps) => console.log(peeps))
+   async componentDidMount() {
+      let res = await fetch('https://ghibliapi.herokuapp.com/people');
+      let peeps = await res.json();
+      this.setState({ peeps });
    }
 
    render() {
-      return <h1>This is the Peeps page</h1>;
+      return (
+         <main className="container-fluid py-4 px-5">
+            <div className="row justify-content-center">
+               <div className="card-deck d-f">
+                  {this.state.peeps.map(peep => {
+                     return <AllPeepCards key={peep.id} peep={peep} />;
+                  })}
+               </div>
+            </div>
+         </main>
+      );
    }
 }
 
 export default Peeps;
-
-
-// getFilms() {
-//    try {
-//       fetch('https://ghibliapi.herokuapp.com/films')
-//          .then(resFilms => {
-//             return resFilms.json();
-//          })
-//          .then(films => this.setState(films));
-//    } catch (e) {console.log(e)}
-// }
-
-// getPeople() {
-//    try {
-//       fetch('https://ghibliapi.herokuapp.com/people')
-//       .then(resPeeps => {
-//          return resPeeps.json();
-//       })
-//       .then(people => this.this.setState({ people }))
-//    } catch (e) {console.log(e)}
-// }
