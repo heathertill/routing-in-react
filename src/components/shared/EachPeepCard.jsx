@@ -38,7 +38,6 @@ export default props => {
                      {url}
                   </a>
                </div>
-
                <Link
                   to="/peeps"
                   className="btn  m-2 d-inline-block "

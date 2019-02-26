@@ -12,7 +12,8 @@ export default props => {
             <div className="card-body pb-1">
                <h3 className="card-title">{name}</h3>
             </div>
-            <div className="card-footer">
+            <div className="card-footer
+            " style={{borderColor: "transparent", backgroundColor: "white"}}>
                <Link
                   to={`/peep/${id}`}
                   className="btn m-2 py-1 d-inline-block"
